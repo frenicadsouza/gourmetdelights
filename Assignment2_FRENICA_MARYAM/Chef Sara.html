@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+    <title>Catering Website</title>
+    <link rel="stylesheet" href="style.css">
+<!-- style.css is imported so that the design is applied to this 
+html page -->
+
+    <script>
+        function showRecipe(index) {
+            fetch('recipes.json')
+                .then(response => response.json())
+                .then(data => {
+                    const recipe = data[index];
+                    
+                    const recipeDisplay = document.getElementById('recipeDisplay');
+                    recipeDisplay.innerHTML = `
+                        <h2>${recipe.name}</h2>
+                    <table style="width: 100%; border-spacing: 20px;">
+                        <tr>
+                            <td style="vertical-align: top; width: 70%;">
+                                <h3>Ingredients 📜</h3>
+                                <ul>
+                                ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                                </ul>
+                            </td>
+                            <td style="vertical-align: top; width: 30%; text-align: center;">
+                            <img src="${recipe.image}" alt="${recipe.name}" style="max-width: 100%; height: auto; border-radius: 10px;">
+                            </td>
+                        </tr>
+                    </table>`;
+                })
+                .catch(error => {
+                    console.error('Error loading the recipe data:', error);
+                });
+        }
+    </script>
+<!-- this fetches the json file and connects it to the html file
+    and when the function is called it will display info from 
+    the json file. -->
+</head>
+<body>
+    <!-- a header is made for aesthetics and convenient user navigation -->
+    <header>
+        <h3>   <h3>
+        <h1>Welcome to Gourmet Delights</h1>
+        <h1>The Best Catering Services in Dubai</h1>
+    </header>
+    <!-- a navigation bar to help user navigate based on their choices -->
+    <nav>
+        <a href="HomePage.html" target="_blank">Home</a>
+        <a href="Founders.html" target="_blank">Founders</a>
+        <a href="#Chef Sara.html" target="_self">Chef Sara</a>
+        <a href="Chef Raj.html" target="_blank">Chef Raj</a>
+        <a href="Chef Alex.html" target="_blank">Chef Alex</a>
+        <a href="Chef Soo.html" target="_blank">Chef Soo</a>
+        <a href="Comments.html" target="_blank">Comments</a>
+    </nav>
+<!-- center is used to align the content and here
+it explains what the chef does and their recipes -->
+    <div class="main1" id="main1">
+        <h2><center>🍳 Chef Sara 🍳</h2>
+        <p><center>
+            Meet Chef Sara, a culinary artist with a passion for creating unforgettable dining experiences. 
+            With years of expertise and a deep love for food, she specializes in crafting authentic dishes that 
+            celebrate the rich heritage of Middle Eastern cuisine. Chef Sara's approach combines traditional 
+            techniques with a modern twist, ensuring every dish is a masterpiece of flavor and presentation.
+        </p>
+        <hr>
+        <h2><center>🍲 Middle Eastern Cuisine 🍲</h2>
+        <p><center>
+            Chef Sara’s catering services bring the vibrant flavors of the Middle East to your table. From aromatic 
+            spices to fresh, wholesome ingredients, each dish tells a story of cultural heritage and culinary mastery. 
+            Whether it’s creamy hummus, tender lamb kebabs, or fragrant saffron rice, her menu is designed to delight 
+            and transport you to the heart of the Middle East. Perfect for weddings, corporate events, and intimate 
+            gatherings, Chef Sara's catering adds a touch of elegance and authenticity to every occasion.
+        </p>
+    </div>
+<!-- a table is made to diaply the recipes, and the function is called
+so when the user click on the button, the recipe is displayed -->
+    <table class="table1">
+        <tr>
+            <td><img src="./images/soup.png" alt="Red Lentil Soup"></td>
+            <td><center><button onclick="showRecipe(0)">Show Recipe 👇</button></center></td>
+            <td><img src="./images/bread.png" alt="Man’oushe"></td>
+        </tr>
+        <tr>
+            <td><center><button onclick="showRecipe(1)">Show Recipe 👆</button></center></td>
+            <td><img src="./images/falafel.png" alt="Falafel"></td>
+            <td><center><button onclick="showRecipe(2)">Show Recipe 👆</button></center></td>
+        </tr>
+    </table>
+
+
+<!-- the recipe will be displayed here -->
+    <div id="recipeDisplay" style="margin-top: 20px; padding: 20px; border: 1px solid #ccc;">
+    </div>
+</body>
+</html>

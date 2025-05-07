@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+    <title>Catering Website</title>
+    <link rel="stylesheet" href="style.css">
+<!-- style.css is imported so that the design is applied to this 
+html page -->
+<script>
+function showPopup(event) {
+    event.preventDefault(); // Prevent the form from submitting immediately
+    alert("Thank you for your comment");
+    event.target.submit(); // Submit the form after showing the message
+}
+</script>
+</head>
+<body>
+<!-- a header is made for aesthetics and convenient user navigation -->
+    <header>
+        <h3>   <h3>
+        <h1>Welcome to Gourmet Delights</h1>
+        <h1>The Best Catering Services in Dubai</h1>
+    </header>
+<!-- a navigation bar to help user navigate based on their choices -->
+    <nav>
+        <a href="HomePage.html" target="_blank">Home</a>
+        <a href="Founders.html" target="_blank">Founders</a>
+        <a href="Chef Sara.html" target="_blank">Chef Sara</a>
+        <a href="Chef Raj.html" target="_blank">Chef Raj</a>
+        <a href="Chef Alex.html" target="_blank">Chef Alex</a>
+        <a href="Chef Soo.html" target="_blank">Chef Soo</a>
+        <a href="#Comments.html" target="_self">Comments</a>
+    </nav>
+<!-- a form is made for the user to post a comment -->
+    <form action="save_comment.php" method="POST" onsubmit="showPopup(event)">
+        <table class="table2" cellpadding="8">
+            <tr>
+            <td colspan="2"> <h2>Clients Comments</h2></td>
+            </tr>
+            <tr>
+            <td colspan="2">
+            <input type="text" name="Name" size="54" class="input1" placeholder="Name" required>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="2">
+            <textarea name="Comment" rows="4" class="input2" placeholder="Comment" required></textarea>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="2">
+            <button type="submit" class="button2">Submit</button>
+            </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
